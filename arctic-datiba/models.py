@@ -1,11 +1,16 @@
 import json
+from django.db.models import Model, fields
 
-
-class Block(object):
+class BlockModel(Model):
     """
-    Layout Blocks
+    Block Model
+
     """
     type = "base"
+    is_active = fields.BooleanField()
+    context = fields.TextField()
+    updated_at = fields.DateTimeField(auto_now=True, auto_now_add=True)
+
 
     def get_context_data(self):
         pass
@@ -24,13 +29,3 @@ class Block(object):
         except (ValueError, TypeError):
             context = {}
         return context
-
-    def validate(self, data):
-        """
-        Validate the input
-
-        :param data:
-        :return:
-        """
-        return True
-
