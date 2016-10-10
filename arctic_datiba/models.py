@@ -1,16 +1,17 @@
 import json
 from django.db.models import Model, fields
 
+
 class BlockModel(Model):
     """
-    Block Model
+    Abstract Block Model
+    Blocks have a type, and - apart from some status info - contain a JSON field
 
     """
     type = "base"
     is_active = fields.BooleanField()
     context = fields.TextField()
-    updated_at = fields.DateTimeField(auto_now=True, auto_now_add=True)
-
+    updated_at = fields.DateTimeField(auto_now=True)
 
     def get_context_data(self):
         pass
@@ -29,3 +30,14 @@ class BlockModel(Model):
         except (ValueError, TypeError):
             context = {}
         return context
+
+    def clean_context(self):
+        """
+        Return the context, see if it's valid JSON.
+
+        :return:
+        """
+        pass
+
+    class Meta:
+        abstract = True

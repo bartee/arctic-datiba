@@ -30,7 +30,7 @@ class SuperModelService(object):
             for model in self.models:
                 classes = inspect.getmembers(model, inspect.isclass)
                 for class_dict_el in classes:
-                    if issubclass(class_dict_el[1], BlockModel) and class_dict_el[1] is not BlockModel:
+                    if issubclass(class_dict_el[1], classname) and class_dict_el[1] is not classname:
                         result.update({class_dict_el[0]: class_dict_el[1]})
 
             self.resultset.update({classname: result})
