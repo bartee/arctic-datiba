@@ -14,7 +14,7 @@ except:
     REQUIREMENTS = None
 
 setup(
-    name='arctic-datiba',
+    name='arctic_datiba',
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 3 - Alpha',
